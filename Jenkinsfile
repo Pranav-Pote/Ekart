@@ -74,7 +74,7 @@ pipeline {
             steps{
                 script{
                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u pranav303 -p ${dockerhubpwd}'}
+                  echo "$dockerhubpwd" | docker login -u pranav303 --Company@303-stdin'}
                    sh 'docker push pranav303/ekart:latest'
                 }
             }
